@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000/todo";
+const API_URL = "https://api.intellihelper.tech/todo";
 
 const getToken = () => localStorage.getItem("token");
 

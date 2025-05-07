@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8000/notes", // change if backend is hosted elsewhere
+  baseURL: "https://api.intellihelper.tech/notes", // change if backend is hosted elsewhere
 });
 
 API.interceptors.request.use((config) => {

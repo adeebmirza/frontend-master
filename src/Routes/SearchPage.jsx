@@ -14,7 +14,7 @@ const SearchPage = () => {
     setResults([]);
     setAnswer('');
     try {
-      const response = await fetch(`http://localhost:8000/search?query=${encodeURIComponent(query)}`);
+      const response = await fetch(`https://api.intellihelper.tech/search?query=${encodeURIComponent(query)}`);
       const data = await response.json();
 
       if (response.ok && data) {

@@ -16,7 +16,7 @@ const SearchPage = () => {
     setResults([]);
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/search?query=${encodeURIComponent(trimmedQuery)}`);
+      const response = await axios.get(`https://api.intellihelper.tech/search?query=${encodeURIComponent(trimmedQuery)}`);
 
       if (response.data?.status === "success" && response.data.results.length > 0) {
         setResults(response.data.results);

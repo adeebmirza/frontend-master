@@ -20,7 +20,7 @@ const NewsDetail = () => {
     setLoading(true);
     setError("");
     try {
-      const response = await axios.post("http://localhost:8000/summarize", {
+      const response = await axios.post("https://api.intellihelper.tech/summarize", {
         url: news.url
       });
       setSummary(response.data.summary); // ✅ FIXED

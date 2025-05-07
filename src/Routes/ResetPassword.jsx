@@ -25,7 +25,7 @@ const ResetPassword = () => {
     }
 
     try {
-      const response = await axios.post(`http://127.0.0.1:8000/reset-password/${token}`, {
+      const response = await axios.post(`https://api.intellihelper.tech/reset-password/${token}`, {
         new_password: formData.new_password,
       });
 

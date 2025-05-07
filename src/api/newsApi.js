@@ -1,5 +1,5 @@
 // src/api/newsApi.js
-const API_URL = "http://localhost:8000/Intelli_news";
+const API_URL = "https://api.intellihelper.tech/Intelli_news";
 
 export const fetchNews = async (query = "") => {
   const url = query ? `${API_URL}/?query=${query}` : `${API_URL}/`;

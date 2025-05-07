@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000',  // Make sure this matches your backend URL
+  baseURL: 'https://api.intellihelper.tech',  // Make sure this matches your backend URL
   headers: {
     'Content-Type': 'application/json'
   }

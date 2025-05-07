@@ -46,7 +46,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/auth/signup",
+        "https://api.intellihelper.tech/auth/signup",
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -67,7 +67,7 @@ const Signup = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/auth/verify-otp",
+        "https://api.intellihelper.tech/auth/verify-otp",
         { email: userEmail, otp },
         { headers: { "Content-Type": "application/json" } }
       );

@@ -1,4 +1,4 @@
-axios.defaults.baseURL = 'http://localhost:8000'; // Update with your backend URL
+axios.defaults.baseURL = 'https://api.intellihelper.tech'; // Update with your backend URL
 
 // Add a request interceptor for auth
 axios.interceptors.request.use(

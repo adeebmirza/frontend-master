@@ -22,7 +22,7 @@ const ViewNote = () => {
   };
 
   const handleDownload = () => {
-    window.open(`http://localhost:8000/notes/download/${noteId}`, "_blank");
+    window.open(`https://api.intellihelper.tech/notes/download/${noteId}`, "_blank");
   };
 
   if (!note) return <p className="p-4">Loading...</p>;

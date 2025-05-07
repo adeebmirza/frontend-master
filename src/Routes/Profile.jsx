@@ -48,7 +48,7 @@ const Profile = () => {
 
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:8000/profile", {
+        const response = await axios.get("https://api.intellihelper.tech/profile", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -91,7 +91,7 @@ const Profile = () => {
         updateData.new_password = formData.new_password;
       }
 
-      const response = await axios.put("http://127.0.0.1:8000/profile/update", updateData, {
+      const response = await axios.put("https://api.intellihelper.tech/profile/update", updateData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

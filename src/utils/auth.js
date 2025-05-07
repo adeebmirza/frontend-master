@@ -13,7 +13,7 @@ export const getToken = () => {
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8000", // your FastAPI backend
+  baseURL: "https://api.intellihelper.tech", // your FastAPI backend
 });
 
 export default API;

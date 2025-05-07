@@ -41,7 +41,7 @@ const Login = () => {
     setMessage("");
 
     try {
-      const authResponse = await axios.post("http://127.0.0.1:8000/auth/login", {
+      const authResponse = await axios.post("https://api.intellihelper.tech/auth/login", {
         username_or_email: usernameOrEmail,
         password: password,
       });
@@ -71,7 +71,7 @@ const Login = () => {
       const deviceType = navigator.userAgent;
 
       // ✅ Log Login Activity
-      await axios.post("http://127.0.0.1:8000/auth/log-login-activity", {
+      await axios.post("https://api.intellihelper.tech/auth/log-login-activity", {
         username: authResponse.data.user.username,
         email: authResponse.data.user.email,
         ip: userIP,
@@ -94,7 +94,7 @@ const Login = () => {
     setMessage("");
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/forgot-password", {
+      const response = await axios.post("https://api.intellihelper.tech/forgot-password", {
         email: emailForReset,
       });
 

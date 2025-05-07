@@ -32,7 +32,7 @@ const ResumeAI = () => {
 
     try {
       // Update the URL to include the full backend URL
-      const response = await axios.post('http://127.0.0.1:8000/analyze/', formData, {
+      const response = await axios.post('https://api.intellihelper.tech/analyze/', formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       setResults(response.data);

@@ -10,7 +10,7 @@ const SharedNote = () => {
   useEffect(() => {
     const fetchShared = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/notes/shared/${noteId}/${token}`);
+        const res = await axios.get(`https://api.intellihelper.tech/notes/shared/${noteId}/${token}`);
         setNote(res.data);
       } catch (err) {
         setError(err.response?.data?.detail || "Note not available.");

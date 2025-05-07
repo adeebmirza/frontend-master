@@ -48,7 +48,7 @@ const RichTextEditorWrapper = forwardRef(
 
       setLoading(true);
       try {
-        const res = await axios.post("http://localhost:8000/livechat", { 
+        const res = await axios.post("https://api.intellihelper.tech/livechat", { 
           message: userPrompt 
         }, {
           headers: {
