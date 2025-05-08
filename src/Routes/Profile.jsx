@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-// Import jwt-decode to check token expiration
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -19,7 +18,6 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  // ✅ Check if the token is expired before fetching profile
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -30,10 +28,9 @@ const Profile = () => {
 
     try {
       const decodedToken = jwtDecode(token);
-      const currentTime = Date.now() / 1000; // Convert to seconds
+      const currentTime = Date.now() / 1000;
 
       if (decodedToken.exp < currentTime) {
-        // Token is expired
         setError("Session expired. Please log in again.");
         localStorage.removeItem("token");
         navigate("/auth/login");
@@ -85,7 +82,6 @@ const Profile = () => {
         dob: formData.dob,
       };
 
-      // Include password fields only if the user fills them
       if (formData.current_password && formData.new_password) {
         updateData.current_password = formData.current_password;
         updateData.new_password = formData.new_password;
@@ -109,60 +105,137 @@ const Profile = () => {
     navigate("/auth/login");
   };
 
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
-  if (!profile) return <p>Loading...</p>;
+  if (error) return <p className="text-red-600 text-center mt-4">{error}</p>;
+  if (!profile) return <p className="text-center mt-4">Loading...</p>;
 
   return (
-    <div>
-      <h2>Profile</h2>
-      <img 
-        src={profile.profile_picture} 
-        alt="Profile" 
-        width="100" 
-        height="100" 
-        style={{ borderRadius: "50%" }}
-      />
+    <div className="max-w-xl mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
+      <h2 className="text-2xl font-bold text-center mb-6">Profile</h2>
+      <div className="flex justify-center mb-6">
+        <img
+          src={profile.profile_picture}
+          alt="Profile"
+          className="w-24 h-24 rounded-full object-cover"
+        />
+      </div>
 
       {editing ? (
-        <form onSubmit={handleUpdate}>
-          <label>Name:</label>
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+        <form onSubmit={handleUpdate} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium">Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              className="mt-1 w-full border border-gray-300 rounded px-3 py-2"
+            />
+          </div>
 
-          <label>Username:</label>
-          <input type="text" name="username" value={formData.username} onChange={handleChange} required />
+          <div>
+            <label className="block text-sm font-medium">Username:</label>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+              className="mt-1 w-full border border-gray-300 rounded px-3 py-2"
+            />
+          </div>
 
-          <label>Gender:</label>
-          <select name="gender" value={formData.gender} onChange={handleChange} required>
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
+          <div>
+            <label className="block text-sm font-medium">Gender:</label>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              required
+              className="mt-1 w-full border border-gray-300 rounded px-3 py-2"
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-          <label>Date of Birth:</label>
-          <input type="date" name="dob" value={formData.dob} onChange={handleChange} required />
+          <div>
+            <label className="block text-sm font-medium">Date of Birth:</label>
+            <input
+              type="date"
+              name="dob"
+              value={formData.dob}
+              onChange={handleChange}
+              required
+              className="mt-1 w-full border border-gray-300 rounded px-3 py-2"
+            />
+          </div>
 
-          <hr />
+          <hr className="my-4" />
 
-          <h3>Change Password (Optional)</h3>
-          <label>Current Password:</label>
-          <input type="password" name="current_password" value={formData.current_password} onChange={handleChange} />
+          <h3 className="text-lg font-semibold">Change Password (Optional)</h3>
 
-          <label>New Password:</label>
-          <input type="password" name="new_password" value={formData.new_password} onChange={handleChange} />
+          <div>
+            <label className="block text-sm font-medium">Current Password:</label>
+            <input
+              type="password"
+              name="current_password"
+              value={formData.current_password}
+              onChange={handleChange}
+              className="mt-1 w-full border border-gray-300 rounded px-3 py-2"
+            />
+          </div>
 
-          <button type="submit">Save</button>
-          <button type="button" onClick={() => setEditing(false)}>Cancel</button>
+          <div>
+            <label className="block text-sm font-medium">New Password:</label>
+            <input
+              type="password"
+              name="new_password"
+              value={formData.new_password}
+              onChange={handleChange}
+              className="mt-1 w-full border border-gray-300 rounded px-3 py-2"
+            />
+          </div>
+
+          <div className="flex justify-between mt-6">
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={() => setEditing(false)}
+              className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+            >
+              Cancel
+            </button>
+          </div>
         </form>
       ) : (
-        <div>
+        <div className="space-y-2">
           <p><strong>Name:</strong> {profile.name}</p>
           <p><strong>Username:</strong> {profile.username}</p>
           <p><strong>Gender:</strong> {profile.gender}</p>
           <p><strong>Date of Birth:</strong> {profile.dob}</p>
 
-          <button onClick={() => setEditing(true)}>Edit Profile</button>
-          <button onClick={handleLogout} style={{ marginLeft: "10px", color: "red" }}>Logout</button>
+          <div className="mt-6 flex justify-between">
+            <button
+              onClick={() => setEditing(true)}
+              className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+            >
+              Edit Profile
+            </button>
+            <button
+              onClick={handleLogout}
+              className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+            >
+              Logout
+            </button>
+          </div>
         </div>
       )}
     </div>

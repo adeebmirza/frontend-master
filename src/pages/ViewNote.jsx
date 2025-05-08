@@ -17,7 +17,7 @@ const ViewNote = () => {
 
   const handleShare = async () => {
     const res = await API.get(`/share/${noteId}`);
-    const link = `${window.location.origin}${res.data.share_link}`;
+    const link = res.data.share_link;
     setShareLink(link);
   };
 
