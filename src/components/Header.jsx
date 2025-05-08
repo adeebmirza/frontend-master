@@ -37,6 +37,7 @@ const Header = () => {
     { name: 'Todo', path: '/todo' },
     { name: 'Resume', path: '/resume' },
     { name: 'Search', path: '/search' },
+    { name: 'Whiteboard', path: '/whiteboard' },
   ];
 
   return (
